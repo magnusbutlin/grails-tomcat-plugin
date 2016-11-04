@@ -16,7 +16,7 @@ plugin=${plugin/"-$version"/}
 
 echo "Publishing plugin $plugin with version $version"
 
-if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_REPO_SLUG == "grails-plugins/grails-tomcat-plugin" && $TRAVIS_PULL_REQUEST == 'false' ]]; then
+if [[ $TRAVIS_BRANCH == '8.x' && $TRAVIS_REPO_SLUG == "grails-plugins/grails-tomcat-plugin" && $TRAVIS_PULL_REQUEST == 'false' ]]; then
   git config --global user.name "$GIT_NAME"
   git config --global user.email "$GIT_EMAIL"
   git config --global credential.helper "store --file=~/.git-credentials"
@@ -42,7 +42,7 @@ if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_REPO_SLUG == "grails-plugins/grails-
 
   ./grailsw publish-plugin --allow-overwrite --non-interactive
 else
-  echo "Not on master branch, so not publishing"
+  echo "Not on 8.x branch, so not publishing"
   echo "TRAVIS_BRANCH: $TRAVIS_BRANCH"
   echo "TRAVIS_REPO_SLUG: $TRAVIS_REPO_SLUG"
   echo "TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
