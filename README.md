@@ -6,3 +6,5 @@ Tomcat Grails Plugin
 Adds support for Tomcat and Servlet API to a Grails application.
 
 Requires [cache](http://grails.org/plugin/cache) plugin 1.1.6 or above.
+
+test
