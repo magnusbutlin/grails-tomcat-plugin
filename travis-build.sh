@@ -30,8 +30,7 @@ if [[ $TRAVIS_BRANCH == '8.x' && $TRAVIS_REPO_SLUG == "magnusbutlin/grails-tomca
     git config --global user.email "magnusbutlin2@hotmail.com"
   fi
 
-  git init
-  git add $filename
+  git add --force $filename
   git commit -m "Deploy to GitHub Pages"
   git push --force "${GIT_DEPLOY_REPO}" master
 else
