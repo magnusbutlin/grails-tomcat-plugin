@@ -27,7 +27,7 @@ if [[ $TRAVIS_BRANCH == '8.x' && $TRAVIS_REPO_SLUG == "magnusbutlin/grails-tomca
   #
    if [[ $filename != *-SNAPSHOT* ]]
    then
-     git clone https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git -b gh-pages gh-pages --single-branch > /dev/null
+     git clone https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git -b 8.x master --single-branch > /dev/null
      cd gh-pages
      git rm -rf .
      cp -r ../target/docs/. ./
