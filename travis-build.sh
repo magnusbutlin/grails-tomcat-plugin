@@ -14,36 +14,28 @@ plugin=${plugin/-SNAPSHOT/}
 version="${plugin#*-}"; 
 plugin=${plugin/"-$version"/}
 
-echo "Publishing plugin $plugin with version $version"
+echo "TRAVIS_BRANCH: $TRAVIS_BRANCH"
+echo "TRAVIS_REPO_SLUG: $TRAVIS_REPO_SLUG"
+echo "TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
 
 if [[ $TRAVIS_BRANCH == '8.x' && $TRAVIS_REPO_SLUG == "magnusbutlin/grails-tomcat-plugin" && $TRAVIS_PULL_REQUEST == 'false' ]]; then
-  git config --global user.name "$GIT_NAME"
-  git config --global user.email "$GIT_EMAIL"
-  git config --global credential.helper "store --file=~/.git-credentials"
-  echo "https://$GH_TOKEN:@github.com" > ~/.git-credentials
+  echo "pushing file $filename"
 
-  echo "filename $filename"
-  # ONLY ENABLE IF gh-pages 
-  #
-   if [[ $filename != *-SNAPSHOT* ]]
-   then
-     git clone https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git -b 8.x master --single-branch > /dev/null
-     cd master
-     git rm -rf .
-     cp -r ../target/docs/. ./
-     git add *
-     git commit -a -m "Updating docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
-     git push origin HEAD
-     cd ..
-     rm -rf master
-   else
-     echo "SNAPSHOT version, not publishing docs"
-   fi
+  #!/usr/bin/env bash
+  GIT_DEPLOY_REPO=${GIT_DEPLOY_REPO:-$(node -e 'process.stdout.write(require("./package.json").repository)')}
+  if [ "$TRAVIS" = "true" ]
+  then
+    # git need this, on Travis-CI nobody is defined
+    git config --global user.name "magnusbutlin"
+    git config --global user.email "magnusbutlin2@hotmail.com"
+  fi
 
-
-  #./grailsw publish-plugin --allow-overwrite --non-interactive
+  git init
+  git add $filename
+  git commit -m "Deploy to GitHub Pages"
+  git push --force "${GIT_DEPLOY_REPO}" master
 else
-  echo "Not on 8.x fored branch, so not publishing"
+  echo "Not on 8.x forked branch, so not pushing"
   echo "TRAVIS_BRANCH: $TRAVIS_BRANCH"
   echo "TRAVIS_REPO_SLUG: $TRAVIS_REPO_SLUG"
   echo "TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
