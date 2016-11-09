@@ -22,25 +22,26 @@ if [[ $TRAVIS_BRANCH == '8.x' && $TRAVIS_REPO_SLUG == "magnusbutlin/grails-tomca
   git config --global credential.helper "store --file=~/.git-credentials"
   echo "https://$GH_TOKEN:@github.com" > ~/.git-credentials
 
+  echo "filename $filename"
   # ONLY ENABLE IF gh-pages 
   #
-  # if [[ $filename != *-SNAPSHOT* ]]
-  # then
-  #   git clone https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git -b gh-pages gh-pages --single-branch > /dev/null
-  #   cd gh-pages
-  #   git rm -rf .
-  #   cp -r ../target/docs/. ./
-  #   git add *
-  #   git commit -a -m "Updating docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
-  #   git push origin HEAD
-  #   cd ..
-  #   rm -rf gh-pages
-  # else
-  #   echo "SNAPSHOT version, not publishing docs"
-  # fi
+   if [[ $filename != *-SNAPSHOT* ]]
+   then
+     git clone https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git -b gh-pages gh-pages --single-branch > /dev/null
+     cd gh-pages
+     git rm -rf .
+     cp -r ../target/docs/. ./
+     git add *
+     git commit -a -m "Updating docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
+     git push origin HEAD
+     cd ..
+     rm -rf gh-pages
+   else
+     echo "SNAPSHOT version, not publishing docs"
+   fi
 
 
-  ./grailsw publish-plugin --allow-overwrite --non-interactive
+  #./grailsw publish-plugin --allow-overwrite --non-interactive
 else
   echo "Not on 8.x fored branch, so not publishing"
   echo "TRAVIS_BRANCH: $TRAVIS_BRANCH"
