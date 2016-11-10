@@ -16,6 +16,8 @@ deploy:
   bucket: "grails.tomcat.plugin"
   skip_cleanup: true
   region: ap-southeast-2
+  on:
+    branch: 8.x
 env:
   global:
   - secure: wyWCCGso8OrQxT4+TYrR/RPwBN6Vfys364umfMn61n0p8I9czGCBK8b2gpsillBtMdaYz49F+WG/AVZTiX6SV//0Oa6nbIAaDwcj8adjNmnEJpJ+PQmmE9w5u8AMynPUN2PWA6heotucY+0OQeHNpfrdZnHsNEhiCbtTcy4ozzG88ukzZ7OhyomIfPdqCh4h726wMGa2tgohYwp0IIdWB2JL9DtPKZKX8tjk59xPEMy6o2fxZAtSkuGB23c2dpbjCuhMMuoajSSWsnzBUKcsQdTBGnLZ70LtvhaEqG9H/6xtyfvS6GMP0NNGs2DFR6reiLHATTPKcJerjHPd1cMBzC2kDjX0KRToBgvjFFWNoKpXte/0AREMKrX9aaYwcrmaOToUyFG0ouS7fuSRC3NnDsEgYIW4N+JMIELIp6qVUl5eY7FBas8ecBgJcWLm9jfZTJha4mGvJWCtMGWi/j7wz/RGyvlrHP5dEFXjOhdGjC8WneV7fnuhsU0OFZBOLMO5bxRFtD+om284ubJzwUvEEScsBMw+BU+QW2IU+pgsXBHkgq7UIBAHXlA4ovRTLCdZeshXdeiGnuYv30zurHukL7nDE5G6l23YJGoRBmPnP2gPO3ZJXj43BTM41jiLiONao8lbTTCQy4i0j3spn+nY7SuUld3oFoydzTYyHbAb1nE=
