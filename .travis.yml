@@ -11,8 +11,9 @@ cache:
 script: ./travis-build.sh
 deploy:
   provider: s3
-  access_key_id: AKIAIFHQ2DNOFQX4SR4Q
-  secret_access_key: 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
+  access_key_id: AKIAIOMW5CAMKAS5NRPA
+  secret_access_key:
+    secure: lsAgFWiEQ633TaYKKzdOrVGQvRPFek422QZiQrNpypPpJ+PtsvIUk4pRJfU5QcPnj4TxgA8X7uY944mJLN0p+EyfgbwZ7qrPGTTxVhspTm+I4oG/BGcU5CAyNmiw0yQMfOzNzzuBorlvFnb1oVqNwPjqzajQ+wULnxCujAEs9JiAjMu8NZPpwISs3LI9zS+EkRRqsZoC2cvs9ExLJ5Y+ZM7vB762LYZ7wfjV7L62qE3VpEHyngwpvPVlG2DrEfpHVESrca/sxClE0Ej/uh2kY2XePK0HcuSqea+tnuwm3W+mDy7RH1Ol2RgcKl+akaGqORthYQFR0r384wWw+OAR+7IrHqj1pWI/t7kLnapawXHFRz8807UQunCtXIJy55/gdKFf4OXglYx/B0Eqn93i6X3U4DdzFr22tCCbIhRpguv/vmW4e0zn2H9wZnXZW4Od/PsXTq/LnfbYBTtux93aa7Wkqz/vng5hN4ZRwuF8nqrnPbU8e8EFTNHHRfiwWck2OCkoOLltan5w7NkSzx7+ErF2NCzsnxux8EWc7tm09iforJvlK7CpeBtBO0INpawNPcKkgt9VEE2Y7YZtg8G6lrQvpLsGXjqIP4YEd2RDuAYOfePK6ZphvtjPJ3xXigM/EAB20LIDtEDt6gUuEKWOfadmUF53JD6GXzgHhenx0LM=
   bucket: grails.tomcat.plugin
   skip_cleanup: true
   region: ap-southeast-2
